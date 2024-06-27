@@ -13,9 +13,9 @@ $koneksi = new mysqli($servername, $username, $password, $dbname);
 //     // echo "Connected successfully";
 // }
 
-if ($koneksi->connect_error) {
-    die("Koneksi database gagal: " . $koneksi->connect_error);
-}else{
-    echo "Terhubung ke database: ";
-}
+// if ($koneksi->connect_error) {
+//     die("Koneksi database gagal: " . $koneksi->connect_error);
+// }else{
+//     echo "Terhubung ke database: ";
+// }
 ?>

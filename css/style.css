@@ -3376,37 +3376,3 @@ h6 {
   width: 80px;
   height: auto;
 }
-
-/* data diri */
-/* 
-<style>
-    .data_diri_area {
-        padding: 50px 0;
-        background-color: #f8f9fa;
-    }
-    .card {
-        border: none;
-        border-radius: 15px;
-        overflow: hidden;
-    }
-    .card-header {
-        background-color: #007bff;
-        color: white;
-        padding: 20px;
-    }
-    .card-title {
-        font-size: 24px;
-        font-weight: bold;
-    }
-    .table th {
-        width: 30%;
-        font-weight: 600;
-    }
-    .table td {
-        width: 70%;
-    }
-    .table-hover tbody tr:hover {
-        background-color: rgba(0,123,255,.1);
-    }
-</style> */
-/* data diri */

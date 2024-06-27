@@ -1,3 +1,38 @@
+<?php
+session_start(); // Pastikan session dimulai
+include 'koneksi.php';
+
+$email = "";
+$password = "";
+$err = "";
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if ($email == "" || $password == "") {
+        echo "<script>alert('Email atau Password Tidak Boleh Kosong')</script>";
+    } else {
+        $stmt = $koneksi->prepare("SELECT * FROM usser WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if ($row && md5($password) === $row['password']) {
+            $_SESSION['email'] = $email;
+            header('location: home.php');
+            exit();
+        } else {
+            $err .= "<li>Akun tidak ditemukan atau password salah</li>";
+            echo "<script>alert('Akun tidak ditemukan atau password salah')</script>";
+        }
+
+        $stmt->close();
+    }
+}
+?>
+
 <!DOCTPE html>
 <html lang="en">
   <head>
@@ -297,23 +332,29 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1">
                     <div class="register_form">
-                        <h3>LOGIN</h3>
-                        <form action="register.php" method="post">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <select name="role">
-        <option value="siswa">Siswa</option>
-        <option value="guru">Guru</option>
-    </select>
-    <button type="submit">Register</button>
-</form>
+                      <?php
+                      if($err) {
+                        echo "<ul>$err</ul>";
 
+                      }
+                      ?>
+                      <h3>LOGIN</h3>
+                        <form action="" method="post">
+                          <div class="mt-10">
+                            <input type="email" name="email" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
+                          </div>
+                          <div class="mt-10">
+                              <input type="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
+                          </div>
+                          <div class="mt-10">
+                              <button type="submit" name="login" class="genric-btn primary circle">Login</button>
+                          </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!--================ End Registration Area =================-->
 
     <!--================ Start Trainers Area =================-->

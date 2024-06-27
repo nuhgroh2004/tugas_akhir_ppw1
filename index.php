@@ -1,29 +1,4 @@
-<!-- <?php
-include 'koneksi.php';
-$email = "";
-$password = "";
-$err = "";
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    if ($email == "" || $password == "") {
-        echo "<script>alert('Email atau Password Tidak Boleh Kosong')</script>";
-    }if (empty($err)) {
-      $sql = "SELECT * FROM usser WHERE email = '$email' AND password = '$password'";
-      $q1 = mysqli_query($koneksi, $sql);
-      $row = mysqli_fetch_array($q1);
 
-      if ($r1['password'] !== md5($password)) {
-        $err .= "<li>akun tidak di temukan</li>";
-    }
-    if(empty($err)){
-      $_SESSION['email'] = $email;
-      header('location: home.php'); 
-      exit();
-    }
-  }
-}
-?> -->
 
 <?php
 session_start(); // Pastikan session dimulai

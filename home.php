@@ -1,3 +1,4 @@
+
 <?php
 session_start(); // Pastikan session dimulai
 include 'koneksi.php';
@@ -20,13 +21,18 @@ if (isset($_POST['login'])) {
         $row = $result->fetch_assoc();
 
         if ($row && md5($password) === $row['password']) {
-            $_SESSION['email'] = $email;
-            header('location: home.php');
-            exit();
-        } else {
-            $err .= "<li>Akun tidak ditemukan atau password salah</li>";
-            echo "<script>alert('Akun tidak ditemukan atau password salah')</script>";
-        }
+          $_SESSION['email'] = $email;
+          $_SESSION['role'] = $row['role'];
+          if ($row['role'] === 'guru') {
+              header('Location: admin.php');
+          } else {
+              header('Location: home.php');
+          }
+          exit();
+      } else {
+          $err .= "<li>Akun tidak ditemukan atau password salah</li>";
+          echo "<script>alert('Akun tidak ditemukan atau password salah')</script>";
+      }
 
         $stmt->close();
     }

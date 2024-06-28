@@ -3,14 +3,14 @@ session_start();
 include 'koneksi.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// Periksa apakah pengguna sudah login
+
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
     exit();
 }
-// Dapatkan email pengguna dari session
+
 $email = $_SESSION['email'];
-// Query untuk mendapatkan data siswa berdasarkan email
+
 $query = "
     SELECT S.id_siswa, S.id_user, S.NISN, S.id_kelas, S.tanggal_lahir, S.jenis_kelamin, S.alamat, S.nama
     FROM siswa S

@@ -1,7 +1,7 @@
 
 
 <?php
-session_start(); // Pastikan session dimulai
+session_start(); 
 include 'koneksi.php';
 
 $email = "";
@@ -39,9 +39,6 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-
-
-
 
 
 <!DOCTPE html>
